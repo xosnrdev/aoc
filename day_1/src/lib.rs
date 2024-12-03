@@ -1,12 +1,12 @@
-pub fn run() -> i32 {
+pub fn run() {
     let input =
         std::fs::read_to_string("./day_1/input.txt").expect("Failed to read file to string");
 
-    println!("============= Part One ============");
-    solution_part_1(input.clone());
-
-    println!("============= Part Two ============");
-    solution_part_2(input.clone()).try_into().unwrap()
+    println!(
+        "Part One is {}, Part Two {}",
+        solution_part_1(input.clone()),
+        solution_part_2(input.clone())
+    );
 }
 
 pub fn solution_part_1(input: String) -> i32 {
@@ -32,7 +32,6 @@ pub fn solution_part_1(input: String) -> i32 {
         .map(|(l, r)| (l - r).abs())
         .sum();
 
-    dbg!(result);
     result
 }
 
@@ -55,7 +54,6 @@ pub fn solution_part_2(input: String) -> usize {
         .map(|num| right.iter().filter(|r| &num == r).count() * num)
         .sum();
 
-    dbg!(result);
     result
 }
 
